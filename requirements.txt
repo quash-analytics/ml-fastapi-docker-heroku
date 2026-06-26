@@ -1,7 +1,7 @@
 fastapi
 uvicorn
 python-multipart
-scikit-learn
 pandas
 numpy
 pickle-mixin
+scikit-learn==1.0.2
