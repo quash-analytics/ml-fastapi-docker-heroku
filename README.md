@@ -18,6 +18,19 @@ This project demonstrates the full pipeline from a trained scikit-learn model to
 
 ---
 
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| API framework | FastAPI |
+| ML library | scikit-learn |
+| Server | Gunicorn + Uvicorn workers |
+| Container | Docker |
+| Hosting | Heroku (container stack) |
+| Python | 3.11 |
+
+---
+
 ## Supported Languages
 
 The model can detect the following 17 languages:
@@ -116,15 +129,3 @@ git push heroku HEAD:main
 
 > **Note:** Set `WEB_CONCURRENCY=1` in the Dockerfile to avoid memory quota errors on Basic dynos, since each worker loads the full ML model into memory.
 
----
-
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| API framework | FastAPI |
-| ML library | scikit-learn |
-| Server | Gunicorn + Uvicorn workers |
-| Container | Docker |
-| Hosting | Heroku (container stack) |
-| Python | 3.11 |
