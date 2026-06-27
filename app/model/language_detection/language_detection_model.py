@@ -39,4 +39,6 @@ def predict_language(X):
         text = re.sub(r'[[]]', ' ', text)
         text = text.lower()
         data_list.append(text)
-    return data_list
+
+    predictions = model.predict(data_list)
+    return [classes[p] for p in predictions]

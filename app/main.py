@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from model.language_detection.language_detection_model import predict_language
-from model.language_detection.language_detection_model import __version__ as model_version
+from app.model.language_detection.language_detection_model import predict_language
+from app.model.language_detection.language_detection_model import __version__ as model_version
 
 
 app = FastAPI()
