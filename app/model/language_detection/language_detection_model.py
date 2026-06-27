@@ -8,19 +8,14 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent
 with open(f"{BASE_DIR}/trained_pipeline-{__version__}.pkl", "rb") as f:
     artifact = pickle.load(f)
 
-if hasattr(artifact, 'steps'):
-    # If it's a Pipeline, the last step is our classifier
-    model = artifact.steps[-1][1]
-elif isinstance(artifact, dict):
-    model = artifact["model"]
-else:
-    model = artifact
+LANGUAGE_LABELS = [
+    "Arabic", "Danish", "Dutch", "English", "French", "German",
+    "Greek", "Hindi", "Italian", "Kannada", "Malayalam", "Portugeese",
+    "Russian", "Spanish", "Sweedish", "Tamil", "Turkish"
+]
 
-try:
-    classes = model.classes_.tolist()
-except AttributeError:
-    classes = []
-
+model = artifact
+classes = LANGUAGE_LABELS
 
 
 def predict_language(X):
@@ -36,7 +31,7 @@ def predict_language(X):
     data_list = []
     for text in X:
         text = re.sub(r'[!@#$(),\n"%^*?\:;~`0-9.]', ' ', text)
-        text = re.sub(r'[[]]', ' ', text)
+        text = re.sub(r'[\[\]]', ' ', text)
         text = text.lower()
         data_list.append(text)
 
